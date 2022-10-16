@@ -3,8 +3,7 @@ import java.util.ArrayList;
 public class KindOfTriplet <A, B, C> extends ArrayList{
         public  A previous;
 
-        public ArrayList <B> data = new ArrayList<>();
-
+        public B data;
         public  C first;
 
         public int stockCapacity = 5;
@@ -15,7 +14,7 @@ public class KindOfTriplet <A, B, C> extends ArrayList{
         public KindOfTriplet( A previous, B data, C first) {
                 this.first = first;
                 this.previous = previous;
-                this.data.add(data);
+                this.data = data;
         }
 
 
@@ -27,7 +26,7 @@ public class KindOfTriplet <A, B, C> extends ArrayList{
                 return previous;
         }
 
-        public ArrayList<B> getData() {
+        public B getData() {
                 return data;
         }
 
@@ -39,8 +38,8 @@ public class KindOfTriplet <A, B, C> extends ArrayList{
                 this.previous = previous;
         }
 
-        public void setData(B data, int num) {
-                this.data.add  (num, data);
+        public void setData(B data) {
+                this.data = data;
         }
 
         public static <B, C, A> KindOfTriplet <B, C, A> of (B a, C b, A c) {

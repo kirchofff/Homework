@@ -3,31 +3,32 @@ import java.util.*;
 public class MyTrickyCollection <T> implements Deque <T> {
 
     public int index = 0;
-    public int linkCount = 0;
     //    private Object first;
 //    private Object previous;
 //    private Object data;
 //    public KindOfTriplet<T> triplet = new KindOfTriplet(first, previous, data);
 
-    public ArrayList <T> current = new ArrayList<T>();
+    public ArrayList <T> current = new ArrayList<T>(5);
+    public ArrayList <T> newCurrent = new ArrayList<>(5);
     @Override
     public boolean add(T t) {
+        KindOfTriplet <ArrayList <T>, ArrayList <T>, ArrayList <T>> link = KindOfTriplet.of(null,null,null);
         if ( index< 5 ) {
             current.add(t);
-            System.out.println(current);
             index++;
-        } else if (index == 5) {
-            ArrayList <T> timeout = new ArrayList<>();
-            for (int i = 0; i < current.size(); i++){
-                timeout.add(current.get(i));
-            }
+            link.setData(current);
+            System.out.println(link.previous+"__"+link.data+ "Link to the past triplet");
+        } else if (index >= 5 && index <10) {
+            newCurrent.add(t);
+            KindOfTriplet <ArrayList <T>, ArrayList <T>, ArrayList <T>> link = KindOfTriplet.of(current, newCurrent,null);
+            index++;
+            System.out.println(link.previous+"__"+link.data+ "Link to the past triplet");
+        } else if (index == 10) {
+            KindOfTriplet <ArrayList <T>, ArrayList <T>, ArrayList <T>> link = KindOfTriplet.of(current, newCurrent,null);
+            newCurrent.clear();
             current.clear();
-            current.add(t);
-            index = 0;
-            KindOfTriplet <ArrayList <T>, ArrayList <T>, ArrayList <T>> link = KindOfTriplet.of(null, null,null);
-            link.setData(timeout,linkCount);
-            linkCount++;
-            System.out.println(link.getData()+ "Link to the past triplet");
+            index =0;
+            System.out.println(link.previous+"__"+link.data+ "Link to the past triplet");
         }
         return false;
     }

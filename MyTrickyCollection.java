@@ -1,61 +1,44 @@
 import java.util.*;
 
 public class MyTrickyCollection <T> implements Deque <T> {
+    private KindOfTriplet <T> left;
+    private KindOfTriplet <T> right;
+    private KindOfTriplet <T> current;
+    private int count = 0;
 
-    public int index = 0;
-    //    private Object first;
-//    private Object previous;
-//    private Object data;
-//    public KindOfTriplet<T> triplet = new KindOfTriplet(first, previous, data);
-
-    public ArrayList <T> current = new ArrayList<T>(5);
-    public ArrayList <T> newCurrent = new ArrayList<>(5);
+    public MyTrickyCollection() {
+        KindOfTriplet <T> triplet = new KindOfTriplet<>(null, null);
+        this.left = left;
+        this.right = right;
+    }
+    @Override
+    public int size() {
+        return count;
+//        int count = 1;
+//        if (left != null){
+//            KindOfTriplet <T> rightTriplet = left.getLeftLink();
+//            while (rightTriplet !=null) {
+//                count++;
+//                rightTriplet = rightTriplet.getRightLink();
+//            }
+//            return count;
+//        } else {
+//            return 0;
+//        }
+    }
     @Override
     public boolean add(T t) {
-        KindOfTriplet <ArrayList <T>, ArrayList <T>, ArrayList <T>> link = KindOfTriplet.of(null,null,null);
-        if ( index< 5 ) {
-            current.add(t);
-            index++;
-            link.setData(current);
-            System.out.println(link.previous+"__"+link.data+ "Link to the past triplet");
-        } else if (index >= 5 && index <10) {
-            newCurrent.add(t);
-            KindOfTriplet <ArrayList <T>, ArrayList <T>, ArrayList <T>> link = KindOfTriplet.of(current, newCurrent,null);
-            index++;
-            System.out.println(link.previous+"__"+link.data+ "Link to the past triplet");
-        } else if (index == 10) {
-            KindOfTriplet <ArrayList <T>, ArrayList <T>, ArrayList <T>> link = KindOfTriplet.of(current, newCurrent,null);
-            newCurrent.clear();
-            current.clear();
-            index =0;
-            System.out.println(link.previous+"__"+link.data+ "Link to the past triplet");
-        }
+        count++;
         return false;
     }
 
-
-//    public boolean add(T t) {
-//        if ( triplet.index< 5 ) {
-//            triplet.data.add (t);
-//            triplet.index++;
-//            System.out.println(triplet.getData());
-//        } else if (triplet.index == 5) {
-//            triplet.setFirst((KindOfTriplet<T>) triplet.getData());
-//            triplet.data.clear();
-//            triplet.data.add(t);
-//            System.out.println(triplet.getData());
-//            triplet.index = 0;
-//            System.out.println(triplet.getFirst()+ "______"+ "Link to the past triplet");
-//        }
-//    return false;
-//    }
-//
-
     @Override
     public void addFirst(T t) {
+        count++;
     }
     @Override
     public void addLast(Object o) {
+        count++;
 
     }
 
@@ -82,11 +65,13 @@ public class MyTrickyCollection <T> implements Deque <T> {
 
     @Override
     public T removeFirst() {
+        count--;
         return null;
     }
 
     @Override
     public T removeLast() {
+        count--;
         return null;
     }
 
@@ -97,6 +82,7 @@ public class MyTrickyCollection <T> implements Deque <T> {
 
     @Override
     public T pollLast() {
+        //////
         return null;
     }
 
@@ -191,10 +177,7 @@ public class MyTrickyCollection <T> implements Deque <T> {
         return false;
     }
 
-    @Override
-    public int size() {
-        return 0;
-    }
+
 
     @Override
     public boolean isEmpty() {

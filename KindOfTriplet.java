@@ -1,85 +1,52 @@
 import java.util.ArrayList;
 
-public class KindOfTriplet <A, B, C> extends ArrayList{
-        public  A previous;
+public class KindOfTriplet <T> {
+        private int capacity = 5;
+        private Object [] value;
+        private KindOfTriplet<T> leftLink;
+        private KindOfTriplet <T> rightLink;
+        private int index;
 
-        public B data;
-        public  C first;
-
-        public int stockCapacity = 5;
-
-
-        public int index;
-
-        public KindOfTriplet( A previous, B data, C first) {
-                this.first = first;
-                this.previous = previous;
-                this.data = data;
+        public KindOfTriplet(KindOfTriplet <T> leftLink, KindOfTriplet <T> rightLink) {
+                this.value = new Object[capacity];
+                this.leftLink = leftLink;
+                this.rightLink = rightLink;
         }
 
-
-        public C getFirst() {
-                return first;
+        public int getCapacity() {
+                return capacity;
         }
 
-        public A getPrevious() {
-                return previous;
+        public Object getValue(int index) {
+                return value [index];
         }
 
-        public B getData() {
-                return data;
+        public void setValue(T currentEl, int index) {
+                this.value [index] = currentEl;
         }
 
-        public void setFirst(C first) {
-                this.first = first;
+        public KindOfTriplet<T> getLeftLink() {
+                return leftLink;
         }
 
-        public void setPrevious(A previous) {
-                this.previous = previous;
+        public void setLeftLink(KindOfTriplet <T> leftLink) {
+                this.leftLink = leftLink;
         }
 
-        public void setData(B data) {
-                this.data = data;
+        public KindOfTriplet<T> getRightLink() {
+                return rightLink;
         }
 
-        public static <B, C, A> KindOfTriplet <B, C, A> of (B a, C b, A c) {
-               return new KindOfTriplet<>(a, b, c);
+        public void setRightLink(KindOfTriplet <T> rightLink) {
+                this.rightLink = rightLink;
         }
-//        public void clearData(ArrayList<T> data) {
-//                this.data.clear();
-//        }
-//
-//
-//        public void setData(ArrayList data) {
-//                this.data = data;
-//        }
-//
-//        public KindOfTriplet<T> getFirst() {
-//                return first;
-//        }
-//
-//        public int getIndex() {
-//                return index;
-//        }
-//
-//        public void setIndex(int index) {
-//                this.index = index;
-//        }
-//
-//        public void setPrevious(KindOfTriplet<T> previous) {
-//                this.previous = previous;
-//        }
-//
-//        public KindOfTriplet<T> getPrevious() {
-//                return previous;
-//        }
-//
-//        public void setFirst(KindOfTriplet<T> first) {
-//                this.first = first;
-//        }
-//
-//        public ArrayList getData() {
-//                return data;
-//        }
+
+        public int getIndex() {
+                return index;
+        }
+
+        public void setIndex(int index) {
+                this.index = index;
+        }
+
 }
-

@@ -1,30 +1,31 @@
-import java.util.ArrayList;
-
 public class KindOfTriplet <T> {
         private int capacity = 5;
-        private Object [] value;
+        private Object [] data;
         private KindOfTriplet<T> leftLink;
         private KindOfTriplet <T> rightLink;
-        private int index;
+        private int indexRight;
+        private int indexLeft;
 
         public KindOfTriplet(KindOfTriplet <T> leftLink, KindOfTriplet <T> rightLink) {
-                this.value = new Object[capacity];
+                this.data = new Object[capacity];
                 this.leftLink = leftLink;
                 this.rightLink = rightLink;
+                this.indexRight = 0;
+                this.indexLeft = 0;
         }
-
+        public void setIndexLeft(int indexLeft) {this.indexLeft = indexLeft;}
+        public int getIndexLeft() {return indexLeft;}
         public int getCapacity() {
                 return capacity;
         }
 
-        public Object getValue(int index) {
-                return value [index];
+        public Object [] getData() {
+                return data ;
         }
 
-        public void setValue(T currentEl, int index) {
-                this.value [index] = currentEl;
+        public void setData(T currentEl, int index) {
+                this.data[index] = currentEl;
         }
-
         public KindOfTriplet<T> getLeftLink() {
                 return leftLink;
         }
@@ -41,12 +42,9 @@ public class KindOfTriplet <T> {
                 this.rightLink = rightLink;
         }
 
-        public int getIndex() {
-                return index;
-        }
-
-        public void setIndex(int index) {
-                this.index = index;
+        public int getIndexRight() {return indexRight;}
+        public void setIndexRight(int indexRight) {
+                this.indexRight = indexRight;
         }
 
 }
